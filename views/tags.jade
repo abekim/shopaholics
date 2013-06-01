@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 List of tags
+  p I'm planning to add a section for adding/editing tags on the same page as list of tags
+
+  #tagList()
+    each tag in tags
+    
+      h3(class=tag.type) #{tag.type}
+        div(class=tag.name) #{tag.name}
+        //-div(value=cat) #{cat.name} is #{cat.color} and #{cat.age} years old.
+
+block js
+  script(src='/javascripts/main.js')

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  center
+    | Name: 
+    input(type='input', id='productName')
+    br
+    | Price: 
+    input(type='input', id='productPrice')
+    br
+    input(type='submit', id='submitProduct')
