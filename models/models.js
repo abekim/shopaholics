@@ -56,9 +56,15 @@ var reviewSchema = mongoose.Schema({
 
 var Review = mongoose.model('Review', reviewSchema);
 
-var tagSchema = mongoose.Schema({
+var typeSchema = mongoose.Schema({
   name: String,
-  type: String
+  _tags: { type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }
+});
+
+var Type = mongoose.model('Type', typeSchema);
+
+var tagSchema = mongoose.Schema({
+  name: String
 });
 
 var Tag = mongoose.model('Tag', tagSchema);
