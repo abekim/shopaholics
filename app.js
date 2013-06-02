@@ -32,8 +32,9 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/product/new', product.submitNew);
-app.post('/product/create', product.create);
+app.get('/products', product.list);
+app.get('/products/new', product.submitNew);
+app.post('/products/create', product.create);
 app.get('/tags', tag.load);
 app.post('/tags/create', tag.create);
 app.get('/tags/list', tag.list);

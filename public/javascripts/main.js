@@ -3,7 +3,7 @@ $(function() {
     var name = $('#productName').val();
     var price = $('#productPrice').val();
 
-    $.post('/product/create', { name: name, price: price });
+    $.post('/products/create', { name: name, price: price });
 
     window.location.replace('/');
   });
@@ -12,7 +12,7 @@ $(function() {
     var name = $('#tagName').val();
     var type = $('#tagType').val();
 
-    $.post('/tag/create', { name: name, type: type });
+    $.post('/tags/create', { name: name, type: type });
   });
 
   var tagRefresh = function () {
@@ -24,6 +24,7 @@ $(function() {
   setInterval(tagRefresh, 1000);
 });
 
+/*
 function removeDuplicateDivs (className) {
   var contents = '';
 
@@ -39,3 +40,4 @@ function removeDuplicateDivs (className) {
     $('.' + className).append(contents);
   }
 }
+*/

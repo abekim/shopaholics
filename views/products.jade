@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p List of all products in the DB. Will implement a feature to filter the items out by attributes, aka layered navigation
+
+  #productList
+    each product in products
+      .product
+        h3= product.name
+        .label #{product.priceRange}
+
+  a(href='./new') Add a New Product
+  br
+  a(href='/') Home

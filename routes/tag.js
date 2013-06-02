@@ -3,7 +3,7 @@ var models = require('../models/models')
 //listing all the tags
 exports.load = function(req, res){
   //get the list of tags by type
-  var tags = models.Type.find({}).sort({ _id: 1 }).populate('_tags').exec(function (err, docs) {
+  var tags = models.Type.find({}).sort({ _id: 1 }).exec(function (err, docs) {
     if (err)
       return console.log("error looking up tags and their types", err);
     //send it back
