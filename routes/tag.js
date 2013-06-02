@@ -63,17 +63,17 @@ exports.list = function (req, res) {
   });
 };
 
-// //in case the new tag form on `/tags` breaks, uncomment and go to `/tags/new`
-// //adding new tags
-// exports.add = function (req, res) {
-//   //get the list of tags by type
-//   var types = models.Type.find({}).exec(function (err, docs) {
-//     if (err)
-//       return console.log("error looking up tags and their types", err);
-//     //send it back
-//     res.render('newTag', { types: docs, title: 'Add a new tag' });
-//   });
-// };
+//in case the new tag form on `/tags` breaks, uncomment and go to `/tags/new`
+//adding new tags
+exports.add = function (req, res) {
+  //get the list of tags by type
+  var types = models.Type.find({}).exec(function (err, docs) {
+    if (err)
+      return console.log("error looking up tags and their types", err);
+    //send it back
+    res.render('newTag', { types: docs, title: 'Add a new tag' });
+  });
+};
 
 //add a new type of tag (ie. brand, color, etc)
 exports.addType = function (req, res) {
