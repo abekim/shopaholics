@@ -7,9 +7,9 @@ block content
   #productList
     each product in products
       .product
-        h3= product.name
-        .label #{product.priceRange}
+        strong= product.name + '  '
+          span.labels [ #{product.priceRange} ]
 
-  a(href='./new') Add a New Product
+  a(href='./products/new') Add a New Product
   br
   a(href='/') Home

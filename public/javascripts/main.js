@@ -19,20 +19,19 @@ $(function() {
 
   $('#newType').on('click', function () {
     var name = $('#typeName').val();
-    var tags = [];
 
-    $.post('/types/create', { name: name, tags: tags });
+    $.post('/types/create', { name: name });
 
-    window.location.replace('/');
+    window.location.replace('/tags');
   });
 
-  // var tagRefresh = function () {
-  //   $.get('/tags/list', function (data) {
-  //     $('#tagList').html(data);
-  //   });
-  // };
+  var tagRefresh = function () {
+    $.get('/tags/list', function (data) {
+      $('#tagList').html(data);
+    });
+  };
 
-  // setInterval(tagRefresh, 1000);
+  setInterval(tagRefresh, 1000);
 });
 
 /*
