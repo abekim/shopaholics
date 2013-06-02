@@ -34,7 +34,9 @@ app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/product/new', product.submitNew);
 app.post('/product/create', product.create);
-app.get('/tags', tag.list);
+app.get('/tags', tag.load);
+app.post('/tags/create', tag.create);
+app.get('/tags/list', tag.list);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
