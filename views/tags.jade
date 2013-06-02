@@ -9,16 +9,18 @@ block content
     .row-fluid
       .span4
         h3 Add a new tag (editing existing tag coming soon...)
-        br Name: 
+        br
+        | Name: 
         input#tagName(type='input', placeholder='Tag name...')
-        br Type:
-        select#tagType
+        br 
+        | Type:
+        select#tagType(style='margin-top: 10px')
           each type in types
             option(value=type.name) #{type.name}
         br
-        input#newTag(type='select') Submit
+        input#newTag(type='submit') Submit
       .span8
-        #tagList
+        dl#tagList
           include _tags
 
   a(href='/') Home

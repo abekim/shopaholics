@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  h3 Add a new tag (editing existing tag coming soon...)
+    br Name: 
+    input#tagName(type='input', placeholder='Tag name...')
+    br Type:
+    select#tagType
+      each type in types
+        option(value=type.name) #{type.name}
+    br
+    input#newTag(type='submit') Submit

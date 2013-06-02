@@ -101,4 +101,5 @@ exports.User = User;
 exports.Product = Product;
 exports.Coupon = Coupon;
 exports.Review = Review;
+exports.Type = Type;
 exports.Tag = Tag;

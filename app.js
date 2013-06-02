@@ -30,6 +30,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+//router --> links urls to actual contents
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/products', product.list);
@@ -38,6 +39,9 @@ app.post('/products/create', product.create);
 app.get('/tags', tag.load);
 app.post('/tags/create', tag.create);
 app.get('/tags/list', tag.list);
+app.get('/tags/add', tag.add);
+app.get('/types/add', tag.addType);
+app.post('/types/create', tag.createType);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

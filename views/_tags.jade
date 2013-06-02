@@ -1,4 +1,5 @@
 each type in types
-  h3.type(class=type.name) #{type.name}
-    each tag in type.tags
-      div.tag(id=tag.name) #{tag.name}
+  dt.type(class=type.name) #{type.name}
+  
+  each tag in type._tags
+    dd(class='tag', id=tag.name) #{tag.name}

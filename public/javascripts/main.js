@@ -5,7 +5,7 @@ $(function() {
 
     $.post('/products/create', { name: name, price: price });
 
-    window.location.replace('/');
+    window.location.replace('/products');
   });
 
   $('#newTag').on('click', function () {
@@ -13,15 +13,26 @@ $(function() {
     var type = $('#tagType').val();
 
     $.post('/tags/create', { name: name, type: type });
+
+    window.location.replace('/tags');
   });
 
-  var tagRefresh = function () {
-    $.get('/tags/list', function (data) {
-      $('#tagList').html(data);
-    });
-  };
+  $('#newType').on('click', function () {
+    var name = $('#typeName').val();
+    var tags = [];
 
-  setInterval(tagRefresh, 1000);
+    $.post('/types/create', { name: name, tags: tags });
+
+    window.location.replace('/');
+  });
+
+  // var tagRefresh = function () {
+  //   $.get('/tags/list', function (data) {
+  //     $('#tagList').html(data);
+  //   });
+  // };
+
+  // setInterval(tagRefresh, 1000);
 });
 
 /*
