@@ -39,7 +39,6 @@ app.post('/products/create', product.create);
 app.get('/tags', tag.load);
 app.post('/tags/create', tag.create);
 app.get('/tags/list', tag.list);
-app.get('/tags/add', tag.add);
 app.get('/types/add', tag.addType);
 app.post('/types/create', tag.createType);
 

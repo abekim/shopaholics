@@ -1,6 +1,47 @@
 extends layout
 
 block content
+  .container
+    .row-fluid
+      h1= title
+      p List of all products in the DB. Will implement a feature to filter the items out by attributes, aka layered navigation
+
+    .row-fluid
+      .span4
+        h3 Add a new product
+        .form-horizontal
+          .control-group
+            label.control-label(for='productName') Name
+            .controls
+              input#productName(type='input', placeholder='Product name')
+          .control-group
+            label.control-label(for='brand') Brand
+            .controls
+              input#brand(type='input', placeholder='Brand')
+          .control-group
+            label.control-label(for='productPrice') Price Range
+            .controls
+              .input-prepend
+                span.add-on $
+                input#productPrice(type='input', placeholder='Price')
+          .control-group
+            label.control-label(for='availables') Available At
+            .controls
+              input#availables(type='input', placeholder='Product bought from / available at')
+          each type in types
+            .control-group
+              label.control-label(for=type.name) #{type.name}
+              .controls
+              each tag in types._tags
+                label.checkbox.inline
+                  input(type='checkbox', value=tag.name) #{tag.name}
+          .control-group
+            .controls
+              input#newTag(type='submit') Submit
+      .span8
+        dl#tagList
+          include _tags
+
   h1= title
   p List of all products in the DB. Will implement a feature to filter the items out by attributes, aka layered navigation
 

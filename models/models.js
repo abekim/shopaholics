@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/shopaholics');
 
+/*-- User Model --*/
 var userSchema = mongoose.Schema({
   userId: String,
   name: String,
@@ -23,11 +24,16 @@ var userSchema = mongoose.Schema({
 
 var User = mongoose.model('User', userSchema);
 
+/*-- Product Model --*/
 var productSchema = mongoose.Schema({
   name: String,
-  priceRange: String
-  // overall: Number,
-  // soldAt: String,
+  priceRange: String,
+  brand: String,
+  _availables: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Shop' }],
+  _color: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
+  _types: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
+  _bodyType: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }],
+  overallReview: Number
   // _coupons: { type: mongoose.Schema.Types.ObjectId, ref: 'Coupon' },
   // _similarItems: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
   // _reviews: { type: mongoose.Schema.Types.ObjectId, ref: 'Review' },
@@ -36,6 +42,15 @@ var productSchema = mongoose.Schema({
 
 var Product = mongoose.model('Product', productSchema);
 
+/*-- Shop Model (Sold At / Available At) --*/
+var shopSchema = mongoose.Schema({
+  name: String,
+  link: String
+});
+
+var Shop = mongoose.model('Shop', shopSchema);
+
+/*-- Coupon Model --*/
 var couponSchema = mongoose.Schema({
   name: String,
   link: String
@@ -43,6 +58,7 @@ var couponSchema = mongoose.Schema({
 
 var Coupon = mongoose.model('Coupon', couponSchema);
 
+/*-- User Review Model --*/
 var reviewSchema = mongoose.Schema({
   _user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   price: Number,
@@ -56,6 +72,7 @@ var reviewSchema = mongoose.Schema({
 
 var Review = mongoose.model('Review', reviewSchema);
 
+/*-- Tag Type Model --*/
 var typeSchema = mongoose.Schema({
   name: String,
   _tags: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tag' }]
@@ -63,6 +80,7 @@ var typeSchema = mongoose.Schema({
 
 var Type = mongoose.model('Type', typeSchema);
 
+/*-- Tag Model --*/
 var tagSchema = mongoose.Schema({
   name: String
 });
@@ -95,10 +113,9 @@ reviews
   overall star review
 */
 
-//why does this use module.exports instead of exports? 
-//http://stackoverflow.com/questions/7137397/module-exports-vs-exports-in-nodejs
 exports.User = User;
 exports.Product = Product;
+exports.Shop = Shop;
 exports.Coupon = Coupon;
 exports.Review = Review;
 exports.Type = Type;
