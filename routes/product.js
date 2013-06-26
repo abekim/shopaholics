@@ -31,7 +31,10 @@ exports.list = function (req, res) {
   models.Product.find({}).exec(function (err, docs) {
     if (err)
       return console.log('error listing products', err);
+    console.log('original products:', docs);
     models.Type.find({}).populate('_tags').exec(function (err, types) {
+      console.log('types:', types);
+      console.log('products:', docs);
       if (err)
         return console.log('error listing types', err);
       res.render('products', { types: types, products: docs, title: 'List of products in DB' })
